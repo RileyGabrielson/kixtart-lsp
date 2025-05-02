@@ -1,0 +1,32 @@
+; Network operation examples
+FUNCTION Main()
+    ; Get computer name
+    $computerName = @COMPUTERNAME
+    ? "Computer name: " + $computerName
+
+    ; Get domain name
+    $domainName = @DOMAIN
+    ? "Domain name: " + $domainName
+
+    ; Get user name
+    $userName = @USERNAME
+    ? "User name: " + $userName
+
+    ; Get IP address
+    $ipAddress = @IPADDRESS
+    ? "IP address: " + $ipAddress
+
+    ; Check network connection
+    IF PING("www.google.com")
+        ? "Network connection is available"
+    ELSE
+        ? "Network connection is not available"
+    ENDIF
+
+    ; Get network shares
+    $shares = NETSHARE
+    ? "Network shares:"
+    FOR EACH $share IN $shares
+        ? $share
+    NEXT
+ENDFUNCTION 

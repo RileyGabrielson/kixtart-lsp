@@ -1,0 +1,41 @@
+; File operation examples
+FUNCTION Main()
+    $filename = "test.txt"
+    $content = "Hello, World!"
+
+    ; Write to file
+    IF WRITE($filename, $content)
+        ? "File written successfully"
+    ELSE
+        ? "Error writing file"
+    ENDIF
+
+    ; Read from file
+    $readContent = READ($filename)
+    ? "File content: " + $readContent
+
+    ; Check if file exists
+    IF EXIST($filename)
+        ? "File exists"
+    ELSE
+        ? "File does not exist"
+    ENDIF
+
+    ; Get file size
+    $size = SIZE($filename)
+    ? "File size: " + $size + " bytes"
+
+    ; Delete file
+    IF DELETE($filename)
+        ? "File deleted successfully"
+    ELSE
+        ? "Error deleting file"
+    ENDIF
+
+    ; List files in directory
+    $files = DIR("*.*")
+    ? "Files in current directory:"
+    FOR EACH $file IN $files
+        ? $file
+    NEXT
+ENDFUNCTION 

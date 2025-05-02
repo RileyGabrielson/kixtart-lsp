@@ -1,0 +1,38 @@
+; Registry operation examples
+FUNCTION Main()
+    $key = "HKEY_CURRENT_USER\Software\KiXtart\Test"
+    $valueName = "TestValue"
+    $valueData = "Test Data"
+
+    ; Write to registry
+    IF WRITEKEY($key, $valueName, $valueData)
+        ? "Registry value written successfully"
+    ELSE
+        ? "Error writing to registry"
+    ENDIF
+
+    ; Read from registry
+    $readData = READKEY($key, $valueName)
+    ? "Registry value: " + $readData
+
+    ; Check if registry key exists
+    IF EXISTKEY($key)
+        ? "Registry key exists"
+    ELSE
+        ? "Registry key does not exist"
+    ENDIF
+
+    ; Delete registry value
+    IF DELETEKEY($key, $valueName)
+        ? "Registry value deleted successfully"
+    ELSE
+        ? "Error deleting registry value"
+    ENDIF
+
+    ; List registry values
+    $values = ENUMKEY($key)
+    ? "Registry values:"
+    FOR EACH $value IN $values
+        ? $value
+    NEXT
+ENDFUNCTION 

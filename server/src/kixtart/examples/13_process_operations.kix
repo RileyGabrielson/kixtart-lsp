@@ -1,0 +1,35 @@
+; Process operation examples
+FUNCTION Main()
+    ; Get current process ID
+    $pid = @PID
+    ? "Process ID: " + $pid
+
+    ; Get process list
+    $processes = PROCESSLIST
+    ? "Running processes:"
+    FOR EACH $process IN $processes
+        ? "Name: " + $process[0] + ", PID: " + $process[1]
+    NEXT
+
+    ; Start a process
+    $notepad = RUN("notepad.exe")
+    IF $notepad
+        ? "Notepad started successfully"
+        SLEEP 2
+        ; Terminate the process
+        IF KILL($notepad)
+            ? "Notepad terminated successfully"
+        ELSE
+            ? "Error terminating Notepad"
+        ENDIF
+    ELSE
+        ? "Error starting Notepad"
+    ENDIF
+
+    ; Check if process is running
+    IF PROCESSRUNNING("notepad.exe")
+        ? "Notepad is running"
+    ELSE
+        ? "Notepad is not running"
+    ENDIF
+ENDFUNCTION 

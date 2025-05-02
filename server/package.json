@@ -1,0 +1,26 @@
+{
+  "name": "kixtart-language-server",
+  "description": "Language server for KiXtart",
+  "version": "1.0.0",
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+    "clarity-pattern-parser": "latest",
+    "vscode-languageserver": "^8.1.0",
+    "vscode-languageserver-textdocument": "^1.0.8"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "watch": "tsc -b -w",
+    "test": "vitest run",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@vitest/ui": "^3.1.2",
+    "vitest": "^3.1.2"
+  }
+}

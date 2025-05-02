@@ -1,0 +1,37 @@
+; Conditional statements examples
+FUNCTION Main()
+    $age = 20
+    $hasLicense = 1
+
+    ; Simple if statement
+    IF $age >= 18
+        ? "You are an adult"
+    ENDIF
+
+    ; If-else statement
+    IF $age >= 21
+        ? "You can drink alcohol"
+    ELSE
+        ? "You cannot drink alcohol"
+    ENDIF
+
+    ; Nested if statements
+    IF $age >= 16
+        IF $hasLicense
+            ? "You can drive"
+        ELSE
+            ? "You need a license to drive"
+        ENDIF
+    ELSE
+        ? "You are too young to drive"
+    ENDIF
+
+    ; Multiple conditions
+    IF $age >= 18 AND $hasLicense
+        ? "You can drive and vote"
+    ELSEIF $age >= 16 AND $hasLicense
+        ? "You can drive but cannot vote"
+    ELSE
+        ? "You cannot drive or vote"
+    ENDIF
+ENDFUNCTION 

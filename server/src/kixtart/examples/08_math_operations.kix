@@ -1,0 +1,32 @@
+; Mathematical operation examples
+FUNCTION Main()
+    ; Basic arithmetic
+    $a = 10
+    $b = 3
+    ? "Addition: " + ($a + $b)
+    ? "Subtraction: " + ($a - $b)
+    ? "Multiplication: " + ($a * $b)
+    ? "Division: " + ($a / $b)
+    ? "Modulo: " + ($a % $b)
+
+    ; Power and square root
+    $x = 2
+    $y = 3
+    ? "Power: " + ($x ^ $y)
+    ? "Square root: " + SQRT($x)
+
+    ; Trigonometric functions
+    $angle = 45
+    ? "Sine: " + SIN($angle)
+    ? "Cosine: " + COS($angle)
+    ? "Tangent: " + TAN($angle)
+
+    ; Rounding
+    $num = 3.14159
+    ? "Round: " + ROUND($num, 2)
+    ? "Floor: " + FLOOR($num)
+    ? "Ceiling: " + CEILING($num)
+
+    ; Random numbers
+    ? "Random number: " + RANDOM(1, 100)
+ENDFUNCTION 

@@ -1,0 +1,16 @@
+; Variable examples
+FUNCTION Main()
+    ; String variables
+    $name = "John"
+    $greeting = "Hello, " + $name + "!"
+    ? $greeting
+
+    ; Numeric variables
+    $age = 25
+    $height = 1.75
+    ? "Age: " + $age + ", Height: " + $height
+
+    ; Boolean variables
+    $isAdult = $age >= 18
+    ? "Is adult: " + $isAdult
+ENDFUNCTION 

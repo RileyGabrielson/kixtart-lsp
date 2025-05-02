@@ -1,0 +1,29 @@
+; Function examples
+FUNCTION Main()
+    $result = AddNumbers(5, 3)
+    ? "5 + 3 = " + $result
+
+    $fact = Factorial(5)
+    ? "5! = " + $fact
+
+    $fib = Fibonacci(6)
+    ? "Fibonacci(6) = " + $fib
+ENDFUNCTION
+
+FUNCTION AddNumbers($a, $b)
+    RETURN $a + $b
+ENDFUNCTION
+
+FUNCTION Factorial($n)
+    IF $n <= 1
+        RETURN 1
+    ENDIF
+    RETURN $n * Factorial($n - 1)
+ENDFUNCTION
+
+FUNCTION Fibonacci($n)
+    IF $n <= 1
+        RETURN $n
+    ENDIF
+    RETURN Fibonacci($n - 1) + Fibonacci($n - 2)
+ENDFUNCTION 

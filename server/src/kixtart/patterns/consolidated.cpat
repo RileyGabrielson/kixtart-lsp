@@ -1,0 +1,157 @@
+# Consolidated KiXtart Language Patterns
+
+# Basic Patterns
+space = /\s+/
+ws = space?
+
+# Comments
+comment_contents = /.*\n/
+comment = ";" + comment_contents
+
+# Identifiers and Variables
+identifier = !keyword + /[a-zA-Z_][a-zA-Z0-9_]*/
+variable = "$" + identifier
+
+# Numbers
+integer = /\d+/
+decimal = /\d+\.\d+/
+number = integer | decimal
+
+# Strings
+string_delimiter = "\""
+string_content = /[^"]+/
+string = string_delimiter + string_content + string_delimiter
+
+# Basic Operators
+plus = "+"
+minus = "-"
+multiply = "*"
+divide = "/"
+modulo = "%"
+assign = "="
+equals = "=="
+not_equals = "!="
+less_than = "<"
+greater_than = ">"
+less_than_equal = "<="
+greater_than_equal = ">="
+output = "?"
+
+# Logical Operators
+and = "AND"
+or = "OR"
+not = "NOT"
+
+# Keywords
+if = "IF"
+then = "THEN"
+else = "ELSE"
+endif = "ENDIF"
+for = "FOR"
+to = "TO"
+step = "STEP"
+next = "NEXT"
+while = "WHILE"
+wend = "WEND"
+function = "FUNCTION"
+endfunction = "ENDFUNCTION"
+sub = "SUB"
+endsub = "ENDSUB"
+dim = "DIM"
+redim = "REDIM"
+exit = "EXIT"
+return = "RETURN"
+
+keyword = if | then | else | endif | for | to | step | next | while | wend | function | endfunction | sub | endsub | dim | redim | exit | return
+
+# Function Call Components
+open_paren = "("
+close_paren = ")"
+comma = ","
+argument = basic_expression
+comma_ws = comma + ws
+comma_argument = comma_ws + argument
+comma_argument_repeat = (comma_argument)*
+argument_list = argument + comma_argument_repeat
+optional_argument_list = argument_list?
+function_call = identifier + open_paren + ws + optional_argument_list + ws + close_paren
+
+# Array Access
+array_index = "[" + ws + expression + ws + "]"
+array_access = variable + array_index
+
+# Basic Expression Components
+basic_expression = number | string | variable | array_access | function_call | identifier
+parenthesized_expression = "(" + ws + expression + ws + ")"
+primary_expression = basic_expression | parenthesized_expression
+
+# Unary Operators
+unary_operator = "-" | "NOT"
+unary_expression = (unary_operator + ws + primary_expression) | primary_expression
+
+# Multiplicative Components
+multiplicative_operator = "*" | "/" | "%"
+multiplicative_operand = ws + multiplicative_operator + ws + unary_expression
+multiplicative_operand_repeat = (multiplicative_operand)*
+multiplicative_expression = unary_expression + multiplicative_operand_repeat
+
+# Additive Components
+additive_operator = "+" | "-"
+additive_operand = ws + additive_operator + ws + multiplicative_expression
+additive_operand_repeat = (additive_operand)*
+additive_expression = multiplicative_expression + additive_operand_repeat
+
+# Relational Components
+relational_operator = "<" | ">" | "<=" | ">="
+relational_operand = ws + relational_operator + ws + additive_expression
+relational_operand_repeat = (relational_operand)*
+relational_expression = additive_expression + relational_operand_repeat
+
+# Equality Components
+equality_operator = "==" | "!="
+equality_operand = ws + equality_operator + ws + relational_expression
+equality_operand_repeat = (equality_operand)*
+equality_expression = relational_expression + equality_operand_repeat
+
+# Logical AND Components
+and_operand = ws + "AND" + ws + equality_expression
+and_operand_repeat = (and_operand)*
+logical_and_expression = equality_expression + and_operand_repeat
+
+# Logical OR Components
+or_operand = ws + "OR" + ws + logical_and_expression
+or_operand_repeat = (or_operand)*
+logical_or_expression = logical_and_expression + or_operand_repeat
+
+# Assignment
+assignment_expression = (variable | array_access) + ws + "=" + ws + logical_or_expression
+
+# Output Statement
+output_expression = output + ws + basic_expression
+
+# Complete Expression
+expression = assignment_expression | output_expression | logical_or_expression
+
+# Statement Components
+statement_content = comment | expression
+statement_with_ws = ws + statement_content
+statement_content_repeat = (statement_with_ws)*
+else_content = "ELSE" + ws + statement_content_repeat
+optional_else = else_content?
+
+# Function Components
+param = variable
+comma_param = "," + ws + param
+comma_param_repeat = (comma_param)*
+param_list = param + comma_param_repeat
+optional_param_list = param_list?
+function_content = statement_content_repeat + ws
+
+# Function Definition
+function_definition = "FUNCTION" + ws + identifier + "(" + optional_param_list + ")" + ws + function_content + ws + "ENDFUNCTION"
+
+# Program Components
+program_content = function_definition | statement_content
+
+# Program
+program = (program_content)+

@@ -1,0 +1,37 @@
+; String operation examples
+FUNCTION Main()
+    ; String concatenation
+    $firstName = "John"
+    $lastName = "Doe"
+    $fullName = $firstName + " " + $lastName
+    ? "Full name: " + $fullName
+
+    ; String length
+    $length = LEN($fullName)
+    ? "Name length: " + $length
+
+    ; String comparison
+    $name1 = "Alice"
+    $name2 = "Bob"
+    IF $name1 == $name2
+        ? "Names are equal"
+    ELSE
+        ? "Names are different"
+    ENDIF
+
+    ; String case conversion
+    $mixedCase = "Hello World"
+    $upperCase = UPPER($mixedCase)
+    $lowerCase = LOWER($mixedCase)
+    ? "Upper case: " + $upperCase
+    ? "Lower case: " + $lowerCase
+
+    ; String search
+    $text = "The quick brown fox"
+    $pos = INSTR($text, "fox")
+    ? "Position of 'fox': " + $pos
+
+    ; String extraction
+    $substring = SUBSTR($text, 4, 5)
+    ? "Substring: " + $substring
+ENDFUNCTION 

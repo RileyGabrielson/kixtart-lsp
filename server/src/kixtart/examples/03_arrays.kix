@@ -1,0 +1,27 @@
+; Array examples
+FUNCTION Main()
+    ; Simple array
+    DIM $fruits[3]
+    $fruits[0] = "Apple"
+    $fruits[1] = "Banana"
+    $fruits[2] = "Orange"
+
+    ; Loop through array
+    FOR $i = 0 TO 2
+        ? "Fruit " + $i + ": " + $fruits[$i]
+    NEXT
+
+    ; Multi-dimensional array
+    DIM $matrix[2,2]
+    $matrix[0,0] = 1
+    $matrix[0,1] = 2
+    $matrix[1,0] = 3
+    $matrix[1,1] = 4
+
+    ; Nested loops for 2D array
+    FOR $i = 0 TO 1
+        FOR $j = 0 TO 1
+            ? "Matrix[" + $i + "," + $j + "] = " + $matrix[$i,$j]
+        NEXT
+    NEXT
+ENDFUNCTION 

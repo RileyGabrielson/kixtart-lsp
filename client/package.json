@@ -1,0 +1,17 @@
+{
+  "name": "kixtart-language-client",
+  "description": "VSCode client for KiXtart language server",
+  "version": "1.0.0",
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.75.0",
+    "@types/node": "^16.11.7"
+  }
+} 

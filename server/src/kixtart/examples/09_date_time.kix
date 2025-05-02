@@ -1,0 +1,39 @@
+; Date and time examples
+FUNCTION Main()
+    ; Current date and time
+    $now = @DATE
+    ? "Current date: " + $now
+    $time = @TIME
+    ? "Current time: " + $time
+
+    ; Date components
+    $year = @YEAR
+    $month = @MONTH
+    $day = @DAY
+    ? "Year: " + $year
+    ? "Month: " + $month
+    ? "Day: " + $day
+
+    ; Time components
+    $hour = @HOUR
+    $minute = @MINUTE
+    $second = @SECOND
+    ? "Hour: " + $hour
+    ? "Minute: " + $minute
+    ? "Second: " + $second
+
+    ; Date arithmetic
+    $tomorrow = @DATE + 1
+    ? "Tomorrow: " + $tomorrow
+
+    ; Date formatting
+    $formattedDate = FORMAT($now, "yyyy-mm-dd")
+    ? "Formatted date: " + $formattedDate
+
+    ; Time difference
+    $startTime = @TIME
+    SLEEP 2
+    $endTime = @TIME
+    $diff = $endTime - $startTime
+    ? "Time difference: " + $diff + " seconds"
+ENDFUNCTION 
