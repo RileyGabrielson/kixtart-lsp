@@ -1,3 +1,5 @@
+*This project is incomplete and doesn't work. I would describe it as a failure of motivation, as well unnecessary to begin with. May it stand as a reminder that not every idea is worth finishing.*
+
 # KiXtart Language Server
 
 A Language Server Protocol (LSP) implementation for the KiXtart scripting language, using clarity-pattern-parser for syntax analysis.
@@ -34,10 +36,6 @@ A Language Server Protocol (LSP) implementation for the KiXtart scripting langua
 - `/server`: Contains the LSP server implementation
   - `/src`: Source code for the server
   - `/out`: Compiled JavaScript output
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
